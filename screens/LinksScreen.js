@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, ActivityIndicator, List, ListItem , View} from 'react-native';
+import { ScrollView, StyleSheet, Text, ActivityIndicator, List, ListItem , View, FlatList} from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 import Api from '../data/Api';
 
@@ -79,14 +79,24 @@ export default class LinksScreen extends React.Component {
     }
     return (
       <ScrollView style={styles.container}>
-        <Text>
-        {
-          this.state.messages.map((item, i) => (
-            item.first + ":" + item.last + "\n"
-          ))
-        }
-        </Text>
+        <FlatList
+          data={this.state.messages}
+          renderItem={({item}) => <Text style={styles.item}>{item.first + " " + item.last}</Text>}
+        />
       </ScrollView>
     );
   }
 }
+/*
+<ScrollView style={styles.container}>
+  <Text>
+  {
+    this.state.messages.map((item, i) => (
+      item.first + ":" + item.last + "\n"
+    ))
+  }
+  </Text>
+</ScrollView>
+
+
+*/
