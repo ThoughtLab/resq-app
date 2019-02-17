@@ -9,13 +9,22 @@ import {
   View,
 } from 'react-native';
 import { WebBrowser } from 'expo';
-
 import { MonoText } from '../components/StyledText';
+import Api from '../data/Api';
+
+// var api = new Api();
+// console.log("api=" + api);
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
+
+  constructor() {
+    super();
+    this.api = new Api();
+
+  }
 
   render() {
     return (
@@ -47,8 +56,8 @@ export default class HomeScreen extends React.Component {
           </View>
 
           <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
+            <TouchableOpacity onPress={this.api.insertSampleRowInFireStore} style={styles.helpLink}>
+              <Text style={styles.helpLinkText}>Save to Firestore</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
@@ -86,6 +95,7 @@ export default class HomeScreen extends React.Component {
       );
     }
   }
+
 
   _handleLearnMorePress = () => {
     WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/guides/development-mode');
