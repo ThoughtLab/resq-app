@@ -76,7 +76,7 @@ export default class MapScreen extends React.Component {
         lon: doc.data().location.longitude
       });
     });
-    console.log("set messages->" + messages);
+    console.log("set messages->" + messages.length);
     this.setState({
       messages,
       isLoading: false,
