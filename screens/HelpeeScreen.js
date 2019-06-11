@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
   welcomeContainer: {
     alignItems: 'center',
     marginTop: 10,
-    marginBottom: 20,
+    marginBottom: 20
   },
   welcomeImage: {
     width: 140,
@@ -217,14 +217,14 @@ const styles = StyleSheet.create({
   helpContainer: {
     width: '50%',
     marginTop: 10,
-    alignItems: 'center',
+    alignItems: 'center'
   },
   helpLinkIcon: {
     width: 80,
     height: 60,
     resizeMode: 'contain',
     marginTop: 3,
-    marginLeft: -10,
+    marginLeft: -10
   },
   helpLinkText: {
     fontSize: 14,
@@ -232,6 +232,6 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   helpLink: {
-    paddingVertical: 15,
+    paddingVertical: 15
   }
 });
