@@ -56,7 +56,9 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    borderColor: 'black',
+    borderWidth: 3,
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#eee',
   },
 });

@@ -31,6 +31,12 @@ export default class HomeScreen extends React.Component {
 
   }
 
+  flatie() {
+    console.log('HomeScreen:help:flatie');
+    var api = new Api();
+    api.askForHelp(helpee.name, 'I have a flatie', 'mechanic', new Date(), helpee.vehicle, helpee.lat, helpee.long);
+  }
+
   flatTyre() {
     console.log('HomeScreen:help');
     var api = new Api();
@@ -64,41 +70,74 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+        <ScrollView contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
             <Image
-              source={require('../assets/images/ResQlogo.png')}
+              source={require('../assets/images/ResQLogo.png')}
               style={styles.welcomeImage}
             />
           </View>
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this.flatTyre} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Flat Tyre</Text>
-            </TouchableOpacity>
-          </View>
 
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this.medical} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Medical</Text>
-            </TouchableOpacity>
-          </View>
+          <View style={styles.linksContainer}>
+            <View style={styles.helpContainer}>
+              <TouchableOpacity onPress={this.flatie} style={styles.helpLink}>
+                <Image
+                  source={require('../assets/images/battery.png')}
+                  style={styles.helpLinkIcon}
+                />
+                <Text style={styles.helpLinkText}>Flatie</Text>
+              </TouchableOpacity>
+            </View>
 
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this.tow} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Tow</Text>
-            </TouchableOpacity>
-          </View>
+            <View style={styles.helpContainer}>
+              <TouchableOpacity onPress={this.flatTyre} style={styles.helpLink}>
+                <Image
+                  source={require('../assets/images/Tyres.png')}
+                  style={styles.helpLinkIcon}
+                />
+                <Text style={styles.helpLinkText}>Flat Tyre</Text>
+              </TouchableOpacity>
+            </View>
 
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this.sos} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>SOS</Text>
-            </TouchableOpacity>
-          </View>
+            <View style={styles.helpContainer}>
+              <TouchableOpacity onPress={this.medical} style={styles.helpLink}>
+                <Image
+                  source={require('../assets/images/medical.png')}
+                  style={styles.helpLinkIcon}
+                />
+                <Text style={styles.helpLinkText}>Medical</Text>
+              </TouchableOpacity>
+            </View>
 
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this.fuel} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Fuel</Text>
-            </TouchableOpacity>
+            <View style={styles.helpContainer}>
+              <TouchableOpacity onPress={this.tow} style={styles.helpLink}>
+                <Image
+                  source={require('../assets/images/tow.png')}
+                  style={styles.helpLinkIcon}
+                />
+                <Text style={styles.helpLinkText}>Tow</Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.helpContainer}>
+              <TouchableOpacity onPress={this.sos} style={styles.helpLink}>
+                <Image
+                  source={require('../assets/images/sos.png')}
+                  style={styles.helpLinkIcon}
+                />
+                <Text style={styles.helpLinkText}>SOS</Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.helpContainer}>
+              <TouchableOpacity onPress={this.fuel} style={styles.helpLink}>
+                <Image
+                  source={require('../assets/images/fuel.png')}
+                  style={styles.helpLinkIcon}
+                />
+                <Text style={styles.helpLinkText}>Fuel</Text>
+              </TouchableOpacity>
+            </View>
           </View>
 
         </ScrollView>
@@ -143,8 +182,14 @@ export default class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#eee',
+    height: '100%'
+  },
+  linksContainer: {
     flex: 1,
-    backgroundColor: '#fff',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'flex-start'
   },
   developmentModeText: {
     marginBottom: 20,
@@ -162,70 +207,30 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   welcomeImage: {
-    width: 100,
-    height: 80,
+    width: 140,
+    height: 120,
     resizeMode: 'contain',
     marginTop: 3,
     marginLeft: -10,
   },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)',
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center',
-  },
-  tabBarInfoContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: { height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 20,
-      },
-    }),
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 20,
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    textAlign: 'center',
-  },
-  navigationFilename: {
-    marginTop: 5,
-  },
   helpContainer: {
+    width: '50%',
     marginTop: 15,
     alignItems: 'center',
   },
-  helpLink: {
-    paddingVertical: 15,
+  helpLinkIcon: {
+    width: 80,
+    height: 60,
+    resizeMode: 'contain',
+    marginTop: 3,
+    marginLeft: -10,
   },
   helpLinkText: {
     fontSize: 14,
     color: '#2e78b7',
+    textAlign: 'center'
   },
+  helpLink: {
+    paddingVertical: 15,
+  }
 });

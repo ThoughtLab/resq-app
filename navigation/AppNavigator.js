@@ -6,7 +6,7 @@ import MainTabNavigator from './MainTabNavigator';
 
 export default createAppContainer(createSwitchNavigator({
   // You could add another route here for authentication.
+  Main: MainTabNavigator,
   // Read more at https://reactnavigation.org/docs/en/auth-flow.html
-  Auth: AuthNavigator,
-  Main: MainTabNavigator
+  Auth: AuthNavigator
 }));

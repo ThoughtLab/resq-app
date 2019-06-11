@@ -25,7 +25,7 @@ export default class SignInScreen extends React.Component {
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
             <Image
-              source={require('../../assets/images/ResQlogo.png')}
+              source={require('../../assets/images/ResQLogo.png')}
               style={styles.welcomeImage}
             />
           </View>

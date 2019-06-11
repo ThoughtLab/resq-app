@@ -1,27 +1,20 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Image, Platform, StyleSheet } from 'react-native';
 import { createStackNavigator, createSwitchNavigator, createBottomTabNavigator } from 'react-navigation';
 
-import TabBarIcon from '../components/TabBarIcon';
 import HelpeeScreen from '../screens/HelpeeScreen';
 import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-import SignInScreen from '../screens/auth/SignIn';
 
 const HomeStack = createStackNavigator({
   Home: HelpeeScreen,
 });
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+  tabBarLabel: 'Helpee',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
+    <Image
+      source={require('../assets/images/helpee.png')}
+      style={styles.tabBarIcon}
     />
   ),
 };
@@ -31,32 +24,26 @@ const LinksStack = createStackNavigator({
 });
 
 LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+  tabBarLabel: 'Helper',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
-    />
-  ),
-};
-
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
-});
-
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+    <Image
+      source={require('../assets/images/helper.png')}
+      style={styles.tabBarIcon}
     />
   ),
 };
 
 export default createBottomTabNavigator({
     HomeStack,
-    LinksStack,
-    SettingsStack
+    LinksStack
   }
 );
+
+const styles = StyleSheet.create({
+  tabBarIcon: {
+    width: 28,
+    height: 28,
+    resizeMode: 'contain',
+    marginBottom: 3,
+  }
+});
