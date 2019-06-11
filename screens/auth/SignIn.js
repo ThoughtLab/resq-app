@@ -56,7 +56,7 @@ export default class SignInScreen extends React.Component {
             <Button
               onPress={() => this.login('kelvin')}
               buttonStyle={styles.button}
-              title="Mechanic/Medic (Kelvin)"
+              title="Mechanic/Tow (Kelvin)"
               color="#8405f4"
             />
           </View>
@@ -65,7 +65,7 @@ export default class SignInScreen extends React.Component {
             <Button
               onPress={() => this.login('asim')}
               buttonStyle={styles.button}
-              title="Mechanic (Asim)"
+              title="Pastor (Asim)"
               color="#8405f4"
             />
           </View>
@@ -83,7 +83,7 @@ export default class SignInScreen extends React.Component {
             <Button
               onPress={() => this.login('maysam')}
               buttonStyle={styles.button}
-              title="Towing (Maysam)"
+              title="Medic (Maysam)"
               color="#8405f4"
             />
           </View>
