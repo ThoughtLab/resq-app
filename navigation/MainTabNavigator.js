@@ -1,7 +1,6 @@
-
 import React from 'react';
-import { Image, Platform, StyleSheet } from 'react-native';
-import { createStackNavigator, createSwitchNavigator, createBottomTabNavigator } from 'react-navigation';
+import { Image, StyleSheet } from 'react-native';
+import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import HelpeeScreen from '../screens/HelpeeScreen';
 import HelperScreen from '../screens/HelperScreen';
