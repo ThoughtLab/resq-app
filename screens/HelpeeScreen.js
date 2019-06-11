@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Image,
-  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -11,7 +10,7 @@ import {
 import { WebBrowser } from 'expo';
 import Api from '../data/Api';
 
-var helpee = {
+const helpee = {
   name: 'feroz',
   vehicle: 'RAV4',
   lat: '-37.823891',
@@ -73,6 +72,10 @@ export default class HelpeeScreen extends React.Component {
           <View style={styles.welcomeContainer}>
             <Image
               source={require('../assets/images/ResQLogo.png')}
+              style={styles.welcomeImage}
+            />
+            <Image
+              source={require('../assets/images/ISD.png')}
               style={styles.welcomeImage}
             />
           </View>

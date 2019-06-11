@@ -57,7 +57,7 @@ SignInStack.navigationOptions = {
   tabBarLabel: 'SignIn',
   tabBarIcon: ({ focused }) => (
     <Image
-      source={require('../assets/images/helper.png')}
+      source={require('../assets/images/signIn.png')}
       style={styles.tabBarIcon}
     />
   ),
