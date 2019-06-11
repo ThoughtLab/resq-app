@@ -9,27 +9,21 @@ import {
   View,
 } from 'react-native';
 import { WebBrowser } from 'expo';
-import { MonoText } from '../components/StyledText';
 import Api from '../data/Api';
-import Help from '../data/Api';
 
-// var api = new Api();
-// console.log("api=" + api);
 
 var helpee = {
   name: 'feroz',
   vehicle: 'RAV4',
   lat: '-37.823891',
   long: '144.911118'
-}
+};
 
 export default class HomeScreen extends React.Component {
 
   static navigationOptions = {
     header: null,
   };
-
-
 
   constructor() {
     super();
@@ -40,31 +34,31 @@ export default class HomeScreen extends React.Component {
   flatTyre() {
     console.log('HomeScreen:help');
     var api = new Api();
-    api.askForHelp(helpee.name,'I have a flat tyre', 'mechanic', new Date(), helpee.vehicle, helpee.lat , helpee.long);
+    api.askForHelp(helpee.name, 'I have a flat tyre', 'mechanic', new Date(), helpee.vehicle, helpee.lat, helpee.long);
   }
 
   medical() {
     console.log('HomeScreen:help');
     var api = new Api();
-    api.askForHelp(helpee.name,'I have a severe heart ache', 'medical', new Date(), helpee.vehicle, helpee.lat , helpee.long);
+    api.askForHelp(helpee.name, 'I have a severe heart ache', 'medical', new Date(), helpee.vehicle, helpee.lat, helpee.long);
   }
 
   tow() {
     console.log('HomeScreen:help');
     var api = new Api();
-    api.askForHelp(helpee.name,'my axles broken', 'tow', new Date(), helpee.vehicle, helpee.lat , helpee.long);
+    api.askForHelp(helpee.name, 'my axles broken', 'tow', new Date(), helpee.vehicle, helpee.lat, helpee.long);
   }
 
   sos() {
     console.log('HomeScreen:help');
     var api = new Api();
-    api.askForHelp(helpee.name,'random', 'sos', new Date(), helpee.vehicle, helpee.lat , helpee.long);
+    api.askForHelp(helpee.name, 'random', 'sos', new Date(), helpee.vehicle, helpee.lat, helpee.long);
   }
 
   fuel() {
     console.log('HomeScreen:help');
     var api = new Api();
-    api.askForHelp(helpee.name,'my fuel is gonna end', 'fuel', new Date(), helpee.vehicle, helpee.lat , helpee.long);
+    api.askForHelp(helpee.name, 'my fuel is gonna end', 'fuel', new Date(), helpee.vehicle, helpee.lat, helpee.long);
   }
 
   render() {
@@ -73,11 +67,7 @@ export default class HomeScreen extends React.Component {
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           <View style={styles.welcomeContainer}>
             <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
-              }
+              source={require('../assets/images/ResQlogo.png')}
               style={styles.welcomeImage}
             />
           </View>
