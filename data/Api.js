@@ -77,9 +77,14 @@ export default class Api{
 
   }
 
-  callForHelps = (user) => {
-      console.log("callForHelps:", user);
-      return this.db.collection("users/" + user + "/callForHelp");
+  callForHelps = (helpee) => {
+      console.log("callForHelps:", helpee);
+      return this.db.collection("users/" + helpee + "/callForHelp");
+  }
+
+  responseForHelp = (helpee) => {
+      console.log("responseForHelp:", helpee);
+      return this.db.collection("users/" + helpee + "/responseForHelp");
   }
 
   respondToHelp = (user, documentId) => {
