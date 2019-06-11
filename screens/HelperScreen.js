@@ -33,8 +33,8 @@ export default class HelperScreen extends React.Component {
   constructor() {
     super();
     this.api = new Api();
-    console.log("Api()->" + Object.keys(this.api));
-    this.ref = this.api.callForHelps('asim');
+    console.log("HelperScreen.global.user",global.user);
+    this.ref = this.api.callForHelps(global.user);
     this.unsubscribe = null;
     this.state = {
       isLoading: true,
@@ -67,7 +67,7 @@ export default class HelperScreen extends React.Component {
   help(documentId) {
     console.log('HelpeeScreen:help', documentId);
     var api = new Api();
-    api.respondToHelp('asim', documentId);
+    api.respondToHelp(global.user, documentId);
   }
 
   componentDidMount() {

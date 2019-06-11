@@ -2,6 +2,7 @@ import React from 'react';
 import { ScrollView, StyleSheet, Text, ActivityIndicator, List, ListItem , View, FlatList,TouchableOpacity} from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 import Api from '../data/Api';
+import { MapView } from 'expo';
 
 const styles = StyleSheet.create({
   container: {
@@ -32,7 +33,16 @@ var helpee = {
   long: '144.911118'
 }
 
+
 export default class MapScreen extends React.Component {
+
+  state = {
+    mapRegion: {latitude: -37.82458,
+      longitude: 144.957806,
+      latitudeDelta: 1,
+      longitudeDelta: 1,}
+  };
+
   static navigationOptions = {
     title: 'Links',
   };
@@ -49,6 +59,10 @@ export default class MapScreen extends React.Component {
     };
   }
 
+  _handleMapRegionChange = mapRegion => {
+  //  this.setState({ mapRegion });
+  };
+
   onCollectionUpdate = (querySnapshot) => {
     console.log("onCollectionUpdate()->");
     const messages = [];
@@ -58,7 +72,8 @@ export default class MapScreen extends React.Component {
         key: doc.id,
         user:  doc.data().user,
         skills:  doc.data().skills.join(','),
-        location:  doc.data().location.latitude + ":" + doc.data().location.longitude
+        lat:  doc.data().location.latitude,
+        lon: doc.data().location.longitude
       });
     });
     console.log("set messages->" + messages);
@@ -84,15 +99,24 @@ export default class MapScreen extends React.Component {
     }
 
     return (
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
+      <MapView
+          style={{ alignSelf: 'stretch', height: 500}}
+          region={this.state.mapRegion}
+          provider={MapView.PROVIDER_GOOGLE}
+          onRegionChange={this._handleMapRegionChange}>
+          {this.state.messages.map((m) =>
+            <MapView.Marker coordinate={{ latitude: m.lat, longitude: m.lon }}
+              title= {m.user}
+              description={m.skills}
+            />
+          )}
+        </MapView>
         <FlatList
           data={this.state.messages}
-          renderItem={({item}) => <>
-          <Text style={styles.item}>{item.user}</Text>
-          </>
-        }
+          renderItem={({item}) => <Text style={styles.item}>{item.user} is on his way. ETA 20 mins.</Text>}
         />
-      </ScrollView>
+      </View>
     );
   }
 }

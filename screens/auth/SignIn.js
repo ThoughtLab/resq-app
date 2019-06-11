@@ -5,6 +5,7 @@ import {
   ScrollView,
   StyleSheet,
   View,
+  Text,
 } from 'react-native';
 import { Button } from 'react-native-elements';
 
@@ -15,6 +16,18 @@ export default class SignInScreen extends React.Component {
 
   constructor() {
     super();
+    global.user = 'none';
+  }
+
+  login(user, isHelpee) {
+    global.user = user;
+    console.log("global.user",global.user);
+    this.forceUpdate();
+    if(isHelpee) {
+      this.props.navigation.navigate('HelpeeStack');
+    } else {
+      this.props.navigation.navigate('HelperStack');
+    }
   }
 
   render() {
@@ -32,47 +45,60 @@ export default class SignInScreen extends React.Component {
 
           <View style={styles.welcomeContainer}>
             <Button
-              onPress={() => navigate('Main', {name: 'Haris'})}
+              onPress={() => this.login('feroz', true)}
               buttonStyle={styles.button}
-              title="Haris"
+              title="Helpee (Feroz)"
+              color="#04f4a0"
+            />
+          </View>
+
+          <View style={styles.welcomeContainer}>
+            <Button
+              onPress={() => this.login('kelvin')}
+              buttonStyle={styles.button}
+              title="Mechanic/Medic (Kelvin)"
               color="#8405f4"
             />
           </View>
 
           <View style={styles.welcomeContainer}>
             <Button
-              onPress={() => navigate('Main', { name: 'Kelvin' })}
+              onPress={() => this.login('asim')}
               buttonStyle={styles.button}
-              title="Kelvin"
+              title="Mechanic (Asim)"
               color="#8405f4"
             />
           </View>
 
           <View style={styles.welcomeContainer}>
             <Button
-              onPress={() => navigate('Main', { name: 'Asim' })}
+              onPress={() => this.login('haris')}
               buttonStyle={styles.button}
-              title="Asim"
+              title="Medic (Haris)"
               color="#8405f4"
             />
           </View>
 
           <View style={styles.welcomeContainer}>
             <Button
-              onPress={() => navigate('Main', { name: 'Froz' })}
+              onPress={() => this.login('maysam')}
               buttonStyle={styles.button}
-              title="Froz"
+              title="Towing (Maysam)"
               color="#8405f4"
             />
           </View>
 
           <View style={styles.welcomeContainer}>
             <Button
-              onPress={() => navigate('Main', { name: 'Maysam' })}
+              onPress={() => this.login('djb')}
               buttonStyle={styles.button}
-              title="Maysam"
+              title="Mechanic/Medic (David)"
               color="#8405f4"
             />
+          </View>
+
+          <View style={styles.welcomeContainer}>
+            <Text style={styles.item}>Signed in as: { global.user }</Text>
           </View>
 
         </ScrollView>

@@ -11,7 +11,6 @@ import {
 import { WebBrowser } from 'expo';
 import Api from '../data/Api';
 
-
 var helpee = {
   name: 'feroz',
   vehicle: 'RAV4',
@@ -46,7 +45,7 @@ export default class HelpeeScreen extends React.Component {
   medical() {
     console.log('HelpeeScreen:medical');
     var api = new Api();
-    api.askForHelp(helpee.name, 'I have a severe heart ache', 'medical', new Date(), helpee.vehicle, helpee.lat, helpee.long);
+    api.askForHelp(helpee.name, 'I have a severe heart ache', 'medic', new Date(), helpee.vehicle, helpee.lat, helpee.long);
   }
 
   tow() {

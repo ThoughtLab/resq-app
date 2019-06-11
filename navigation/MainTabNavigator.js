@@ -6,12 +6,13 @@ import { createStackNavigator, createSwitchNavigator, createBottomTabNavigator }
 import HelpeeScreen from '../screens/HelpeeScreen';
 import HelperScreen from '../screens/HelperScreen';
 import MapScreen from '../screens/MapScreen';
+import SignInScreen from '../screens/auth/SignIn';
 
-const HomeStack = createStackNavigator({
+const HelpeeStack = createStackNavigator({
   Home: HelpeeScreen,
 });
 
-HomeStack.navigationOptions = {
+HelpeeStack.navigationOptions = {
   tabBarLabel: 'Helpee',
   tabBarIcon: ({ focused }) => (
     <Image
@@ -21,11 +22,11 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({
+const HelperStack = createStackNavigator({
   Links: HelperScreen,
 });
 
-LinksStack.navigationOptions = {
+HelperStack.navigationOptions = {
   tabBarLabel: 'Helper',
   tabBarIcon: ({ focused }) => (
     <Image
@@ -35,11 +36,11 @@ LinksStack.navigationOptions = {
   ),
 };
 
-const SettingsStack = createStackNavigator({
+const MapStack = createStackNavigator({
   Links: MapScreen,
 });
 
-SettingsStack.navigationOptions = {
+MapStack.navigationOptions = {
   tabBarLabel: 'Map',
   tabBarIcon: ({ focused }) => (
     <Image
@@ -49,10 +50,26 @@ SettingsStack.navigationOptions = {
   ),
 };
 
+const SignInStack = createStackNavigator({
+  Links: SignInScreen,
+});
+
+SignInStack.navigationOptions = {
+  tabBarLabel: 'SignIn',
+  tabBarIcon: ({ focused }) => (
+    <Image
+      source={require('../assets/images/helper.png')}
+      style={styles.tabBarIcon}
+    />
+  ),
+};
+
 export default createBottomTabNavigator({
-    HomeStack,
-    LinksStack,
-    SettingsStack
+    SignInStack,
+    HelperStack,
+    HelpeeStack,
+    MapStack,
+
   }
 );
 
