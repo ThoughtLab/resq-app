@@ -77,10 +77,21 @@ export default class Api{
 
   }
 
-/*  get db() {
-    return this.db;
+  callForHelps = (user) => {
+      console.log("callForHelps:", user);
+      return this.db.collection("users/" + user + "/callForHelp");
   }
-*/
+
+  respondToHelp = (user, documentId) => {
+      console.log("respondToHelp:", user, documentId);
+      var docRef = this.db.collection("users/" + user + "/callForHelp").doc(documentId);
+
+      var setWithMerge = docRef.set({
+          accepted: true
+      }, { merge: true });
+  }
+
+
   recieveRow = () => {
    console.log("Trying to query the Sample User data");
    return this.db.collection("users");

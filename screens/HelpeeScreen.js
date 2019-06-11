@@ -23,7 +23,7 @@ var helpee = {
   long: '144.911118'
 }
 
-export default class HomeScreen extends React.Component {
+export default class HelpeeScreen extends React.Component {
 
   static navigationOptions = {
     header: null,
@@ -38,31 +38,31 @@ export default class HomeScreen extends React.Component {
   }
 
   flatTyre() {
-    console.log('HomeScreen:help');
+    console.log('HelpeeScreen:flatTyre');
     var api = new Api();
     api.askForHelp(helpee.name,'I have a flat tyre', 'mechanic', new Date(), helpee.vehicle, helpee.lat , helpee.long);
   }
 
   medical() {
-    console.log('HomeScreen:help');
+    console.log('HelpeeScreen:medical');
     var api = new Api();
     api.askForHelp(helpee.name,'I have a severe heart ache', 'medical', new Date(), helpee.vehicle, helpee.lat , helpee.long);
   }
 
   tow() {
-    console.log('HomeScreen:help');
+    console.log('HelpeeScreen:tow');
     var api = new Api();
     api.askForHelp(helpee.name,'my axles broken', 'tow', new Date(), helpee.vehicle, helpee.lat , helpee.long);
   }
 
   sos() {
-    console.log('HomeScreen:help');
+    console.log('HelpeeScreen:sos');
     var api = new Api();
     api.askForHelp(helpee.name,'random', 'sos', new Date(), helpee.vehicle, helpee.lat , helpee.long);
   }
 
   fuel() {
-    console.log('HomeScreen:help');
+    console.log('HelpeeScreen:fuel');
     var api = new Api();
     api.askForHelp(helpee.name,'my fuel is gonna end', 'fuel', new Date(), helpee.vehicle, helpee.lat , helpee.long);
   }
