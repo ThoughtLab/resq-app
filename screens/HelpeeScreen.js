@@ -212,12 +212,11 @@ const styles = StyleSheet.create({
     width: 140,
     height: 120,
     resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
+    marginTop: 2
   },
   helpContainer: {
     width: '50%',
-    marginTop: 15,
+    marginTop: 10,
     alignItems: 'center',
   },
   helpLinkIcon: {
