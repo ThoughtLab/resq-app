@@ -3,7 +3,7 @@ import { Image, Platform, StyleSheet } from 'react-native';
 import { createStackNavigator, createSwitchNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import HelpeeScreen from '../screens/HelpeeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import HelperScreen from '../screens/HelperScreen';
 
 const HomeStack = createStackNavigator({
   Home: HelpeeScreen,
@@ -20,7 +20,7 @@ HomeStack.navigationOptions = {
 };
 
 const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+  Links: HelperScreen,
 });
 
 LinksStack.navigationOptions = {
