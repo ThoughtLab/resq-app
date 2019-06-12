@@ -26,10 +26,10 @@ const styles = StyleSheet.create({
     height: 44,
   },
   activity: {
-    position: 'absolute',
+    position: 'relative',
     left: 0,
     right: 0,
-    top: 0,
+    top: 10,
     bottom: 0,
     alignItems: 'center',
     justifyContent: 'center'
@@ -76,6 +76,7 @@ export default class MapScreen extends React.Component {
     super();
     this.api = new Api();
     console.log("Api()->" + Object.keys(this.api));
+    console.log(helpee.name);
     this.ref = this.api.responseForHelp(helpee.name);
     this.unsubscribe = null;
     this.state = {
@@ -140,7 +141,8 @@ export default class MapScreen extends React.Component {
         <View style={styles.activity}>
           <ActivityIndicator size="large" color="#0000ff"/>
         </View>
-      )
+
+        )
     } else {
       listView = (
         <FlatList
@@ -160,7 +162,7 @@ export default class MapScreen extends React.Component {
             />
           </View>
           <MapView
-            style={{ alignSelf: 'stretch', height: 500 }}
+            style={{ alignSelf: 'stretch', height: 300 }}
             region={state.mapRegion}
             provider={MapView.PROVIDER_GOOGLE}
             onReady={this.focusMap}>
@@ -171,8 +173,13 @@ export default class MapScreen extends React.Component {
               />
             )}
           </MapView>
-          {listView}
+          {/* {listView} */}
+          <View style={styles.activity}>
+          <Text>An angel is on its way. ETA 10 mins</Text>
+        </View>
+
         </ScrollView>
+
       </View>
     );
   }
