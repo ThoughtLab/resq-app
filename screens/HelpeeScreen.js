@@ -11,7 +11,7 @@ import { WebBrowser } from 'expo';
 import Api from '../data/Api';
 
 const helpee = {
-  name: 'Ellis',
+  name: 'ellis',
   vehicle: 'RAV4',
   lat: '-37.823891',
   long: '144.911118'
