@@ -43,7 +43,7 @@ MapStack.navigationOptions = {
   tabBarLabel: 'Map',
   tabBarIcon: ({ focused }) => (
     <Image
-      source={require('../assets/images/helper.png')}
+      source={require('../assets/images/map.png')}
       style={styles.tabBarIcon}
     />
   ),
