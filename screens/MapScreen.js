@@ -24,14 +24,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   }
-});
+})
 
 var helpee = {
   name: 'feroz',
   vehicle: 'RAV4',
   lat: '-37.823891',
   long: '144.911118'
-};
+}
 
 
 export default class MapScreen extends React.Component {
@@ -76,7 +76,7 @@ export default class MapScreen extends React.Component {
         lon: doc.data().location.longitude
       });
     });
-    console.log("set messages->" + messages.length);
+    console.log("set messages->" + messages);
     this.setState({
       messages,
       isLoading: false,
@@ -105,8 +105,8 @@ export default class MapScreen extends React.Component {
           region={this.state.mapRegion}
           provider={MapView.PROVIDER_GOOGLE}
           onRegionChange={this._handleMapRegionChange}>
-          {this.state.messages.map((m, i) =>
-            <MapView.Marker key={i} coordinate={{ latitude: m.lat, longitude: m.lon }}
+          {this.state.messages.map((m) =>
+            <MapView.Marker coordinate={{ latitude: m.lat, longitude: m.lon }}
               title= {m.user}
               description={m.skills}
             />

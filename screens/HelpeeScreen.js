@@ -33,6 +33,11 @@ export default class HelpeeScreen extends React.Component {
     this.props.navigation.navigate('MapStack');
   };
 
+  rideShare = () => {
+    console.log('HomeScreen:rideShare')
+    this.askForHelp('I need a ride', 'rideShare');
+  }
+
   flatie = () => {
     console.log('HomeScreen:help:flatie');
 
@@ -88,20 +93,20 @@ export default class HelpeeScreen extends React.Component {
             <View style={styles.helpContainer}>
               <TouchableOpacity onPress={this.flatie} style={styles.helpLink}>
                 <Image
-                  source={require('../assets/images/battery.png')}
+                  source={require('../assets/images/mechanical.png')}
                   style={styles.helpLinkIcon}
                 />
-                <Text style={styles.helpLinkText}>Flatie</Text>
+                <Text style={styles.helpLinkText}>Mechanic</Text>
               </TouchableOpacity>
             </View>
 
             <View style={styles.helpContainer}>
-              <TouchableOpacity onPress={this.flatTyre} style={styles.helpLink}>
+              <TouchableOpacity onPress={this.rideShare} style={styles.helpLink}>
                 <Image
-                  source={require('../assets/images/Tyres.png')}
+                  source={require('../assets/images/ridesharing.png')}
                   style={styles.helpLinkIcon}
                 />
-                <Text style={styles.helpLinkText}>Flat Tyre</Text>
+                <Text style={styles.helpLinkText}>Ride Share</Text>
               </TouchableOpacity>
             </View>
 
