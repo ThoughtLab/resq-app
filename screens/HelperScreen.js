@@ -1,5 +1,15 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, ActivityIndicator, List, ListItem , View, FlatList,TouchableOpacity} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  ActivityIndicator,
+  List,
+  ListItem,
+  View,
+  FlatList,
+  TouchableOpacity, Image
+} from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 import Api from '../data/Api';
 
@@ -7,7 +17,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 15,
-    backgroundColor: '#fff',
+    backgroundColor: '#eee',
+    minHeight: '100%',
+    paddingLeft: 10,
+    paddingRight: 10
   },
   item: {
     padding: 10,
@@ -22,8 +35,37 @@ const styles = StyleSheet.create({
     bottom: 0,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  welcomeContainer: {
+    alignItems: 'center',
+    marginTop: 10,
+    marginBottom: 20,
+    borderColor: '#aaa',
+    borderStyle: 'solid',
+    borderWidth: 1,
+    position: 'relative'
+  },
+  helpLinkText: {
+    fontSize: 14,
+    color: '#2e78b7',
+    textAlign: 'center'
+  },
+  helpedLinkText: {
+    fontSize: 14,
+    color: '#58a66b',
+    textAlign: 'center'
+  },
+  helpLink: {
+    paddingVertical: 15
+  },
+  image: {
+    position: 'absolute',
+    left: -60,
+    top: 7,
+    height: 32,
+    width: 32
   }
-})
+});
 
 export default class HelperScreen extends React.Component {
   static navigationOptions = {
@@ -33,7 +75,7 @@ export default class HelperScreen extends React.Component {
   constructor() {
     super();
     this.api = new Api();
-    console.log("HelperScreen.global.user",global.user);
+    console.log("HelperScreen.global.user", global.user);
     this.ref = this.api.callForHelps(global.user);
     this.unsubscribe = null;
     this.state = {
@@ -60,9 +102,9 @@ export default class HelperScreen extends React.Component {
     this.setState({
       messages,
       isLoading: false,
-   });
+    });
 
-  }
+  };
 
   help(documentId) {
     console.log('HelpeeScreen:help', documentId);
@@ -76,21 +118,26 @@ export default class HelperScreen extends React.Component {
   }
 
   display(item) {
-    if(!item.accepted){
+    if (!item.accepted) {
       console.log('display()');
       return <TouchableOpacity onPress={() => this.help(item.key)} style={styles.helpLink}>
-      <Text style={styles.helpLinkText}>I wanna help!</Text>
+        <ActivityIndicator size="large" color="#0000ff" style={styles.image} />
+        <Text style={styles.helpLinkText}>I wanna help!</Text>
       </TouchableOpacity>
     } else {
       return <TouchableOpacity style={styles.helpLink}>
-      <Text style={styles.helpLinkText}>Thanks Mate!</Text>
+        <Image
+          source={require('../assets/images/tick.png')}
+          style={styles.image}
+        />
+        <Text style={styles.helpedLinkText}>Thanks! You have earned a credit.</Text>
       </TouchableOpacity>
     }
   }
 
   render() {
-    if(this.state.isLoading){
-      return(
+    if (this.state.isLoading) {
+      return (
         <View style={styles.activity}>
           <ActivityIndicator size="large" color="#0000ff"/>
         </View>
@@ -101,29 +148,16 @@ export default class HelperScreen extends React.Component {
       <ScrollView style={styles.container}>
         <FlatList
           data={this.state.messages}
-          renderItem={({item}) => <>
-          <Text style={styles.item}>{item.msg}</Text>
-          <View style={styles.helpContainer}>
-            {this.display(item)}
+          renderItem={({ item }) => <View style={styles.welcomeContainer}>
+            <Text style={styles.item}>{item.msg}</Text>
+            <View style={styles.helpContainer}>
+              {this.display(item)}
+            </View>
           </View>
-          </>
-        }
+          }
         />
 
       </ScrollView>
     );
   }
 }
-/*
-<ScrollView style={styles.container}>
-  <Text>
-  {
-    this.state.messages.map((item, i) => (
-      item.first + ":" + item.last + "\n"
-    ))
-  }
-  </Text>
-</ScrollView>
-
-
-*/
