@@ -33,15 +33,14 @@ var helpee = {
   long: '144.911118'
 }
 
+var state = {
+  mapRegion: {latitude: -37.82458,
+    longitude: 144.957806,
+    latitudeDelta: 0.1,
+    longitudeDelta: 0.1,}
+};
 
 export default class MapScreen extends React.Component {
-
-  state = {
-    mapRegion: {latitude: -37.82458,
-      longitude: 144.957806,
-      latitudeDelta: 1,
-      longitudeDelta: 1,}
-  };
 
   static navigationOptions = {
     title: 'Links',
@@ -60,7 +59,7 @@ export default class MapScreen extends React.Component {
   }
 
   _handleMapRegionChange = mapRegion => {
-  //  this.setState({ mapRegion });
+   this.setState({ mapRegion });
   };
 
   onCollectionUpdate = (querySnapshot) => {
@@ -89,6 +88,17 @@ export default class MapScreen extends React.Component {
     this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
   }
 
+  focusMap(markers, animated) {
+   if (this.map) {
+     if (markers && markers.length) {
+       this.map.fitToCoordinates(markers, {
+         animated,
+         edgePadding: Dimensions.tripPageMapMargins
+       });
+     }
+   }
+  }
+
   render() {
     if(this.state.isLoading){
       return(
@@ -98,24 +108,37 @@ export default class MapScreen extends React.Component {
       )
     }
 
+    var listView
+    if(this.state.isLoading && (this.state.messages == null ||  this.state.messages.length <= 0)){
+      listView = (
+        <View style={styles.activity}>
+          <ActivityIndicator size="large" color="#0000ff"/>
+        </View>
+      )
+    } else {
+      listView = (
+        <FlatList
+          data={this.state.messages}
+          renderItem={({item}) => <Text style={styles.item}>{item.user} is on his way. ETA 20 mins.</Text>}
+        />
+      )
+    }
+
     return (
       <View style={styles.container}>
       <MapView
           style={{ alignSelf: 'stretch', height: 500}}
-          region={this.state.mapRegion}
+          region={state.mapRegion}
           provider={MapView.PROVIDER_GOOGLE}
-          onRegionChange={this._handleMapRegionChange}>
+          onReady={this.focusMap}>
           {this.state.messages.map((m) =>
-            <MapView.Marker coordinate={{ latitude: m.lat, longitude: m.lon }}
+            <MapView.Marker key={m.key} coordinate={{ latitude: m.lat, longitude: m.lon }}
               title= {m.user}
               description={m.skills}
             />
           )}
         </MapView>
-        <FlatList
-          data={this.state.messages}
-          renderItem={({item}) => <Text style={styles.item}>{item.user} is on his way. ETA 20 mins.</Text>}
-        />
+        { listView }
       </View>
     );
   }
