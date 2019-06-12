@@ -14,6 +14,17 @@ import { ExpoLinksView } from '@expo/samples';
 import Api from '../data/Api';
 
 const styles = StyleSheet.create({
+  welcomeContainer: {
+    alignItems: 'center',
+    marginTop: 10,
+    marginBottom: 20
+  },
+  welcomeImage: {
+    width: 140,
+    height: 120,
+    resizeMode: 'contain',
+    marginTop: 2
+  },
   container: {
     flex: 1,
     paddingTop: 15,
@@ -36,7 +47,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-  welcomeContainer: {
+  list: {
     alignItems: 'center',
     marginTop: 10,
     marginBottom: 20,
@@ -146,9 +157,15 @@ export default class HelperScreen extends React.Component {
 
     return (
       <ScrollView style={styles.container}>
+        <View style={styles.welcomeContainer}>
+          <Image
+            source={require('../assets/images/ResQLogo.png')}
+            style={styles.welcomeImage}
+          />
+        </View>
         <FlatList
           data={this.state.messages}
-          renderItem={({ item }) => <View style={styles.welcomeContainer}>
+          renderItem={({ item }) => <View style={styles.list}>
             <Text style={styles.item}>{item.msg}</Text>
             <View style={styles.helpContainer}>
               {this.display(item)}
