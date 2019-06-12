@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
 
 export default class HelperScreen extends React.Component {
   static navigationOptions = {
-    title: 'Links',
+    header: null,
   };
 
   constructor() {
