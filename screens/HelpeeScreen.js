@@ -11,7 +11,7 @@ import { WebBrowser } from 'expo';
 import Api from '../data/Api';
 
 const helpee = {
-  name: 'feroz',
+  name: 'Ellis',
   vehicle: 'RAV4',
   lat: '-37.823891',
   long: '144.911118'
@@ -26,44 +26,48 @@ export default class HelpeeScreen extends React.Component {
   constructor() {
     super();
     this.api = new Api();
-
   }
 
-  flatie() {
+  askForHelp = (message, emergency) => {
+    new Api().askForHelp(helpee.name, message, emergency, new Date(), helpee.vehicle, helpee.lat, helpee.long);
+    this.props.navigation.navigate('MapStack');
+  };
+
+  flatie = () => {
     console.log('HomeScreen:help:flatie');
-    var api = new Api();
-    api.askForHelp(helpee.name, 'I have a flatie', 'mechanic', new Date(), helpee.vehicle, helpee.lat, helpee.long);
-  }
 
-  flatTyre() {
+    this.askForHelp('I have a flatie', 'mechanic');
+  };
+
+  flatTyre = () => {
     console.log('HelpeeScreen:flatTyre');
-    var api = new Api();
-    api.askForHelp(helpee.name, 'I have a flat tyre', 'mechanic', new Date(), helpee.vehicle, helpee.lat, helpee.long);
-  }
 
-  medical() {
+    this.askForHelp('I have a flat tyre', 'mechanic');
+  };
+
+  medical = () => {
     console.log('HelpeeScreen:medical');
-    var api = new Api();
-    api.askForHelp(helpee.name, 'I have a severe heart ache', 'medic', new Date(), helpee.vehicle, helpee.lat, helpee.long);
-  }
 
-  tow() {
+    this.askForHelp('I have a severe heart ache', 'medic');
+  };
+
+  tow = () => {
     console.log('HelpeeScreen:tow');
-    var api = new Api();
-    api.askForHelp(helpee.name, 'my axles broken', 'tow', new Date(), helpee.vehicle, helpee.lat, helpee.long);
-  }
 
-  sos() {
+    this.askForHelp('my axles broken', 'tow');
+  };
+
+  sos = () => {
     console.log('HelpeeScreen:sos');
-    var api = new Api();
-    api.askForHelp(helpee.name, 'random', 'sos', new Date(), helpee.vehicle, helpee.lat, helpee.long);
-  }
 
-  fuel() {
+    this.askForHelp('random', 'sos');
+  };
+
+  fuel = () => {
     console.log('HelpeeScreen:fuel');
-    var api = new Api();
-    api.askForHelp(helpee.name, 'my fuel is gonna end', 'fuel', new Date(), helpee.vehicle, helpee.lat, helpee.long);
-  }
+
+    this.askForHelp('my fuel is gonna end', 'fuel');
+  };
 
   render() {
     return (
