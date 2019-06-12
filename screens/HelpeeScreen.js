@@ -29,7 +29,7 @@ export default class HelpeeScreen extends React.Component {
   }
 
   askForHelp = (message, emergency) => {
-    new Api().askForHelp(helpee.name, message, emergency, new Date(), helpee.vehicle, helpee.lat, helpee.long);
+    this.api.askForHelp(helpee.name, message, emergency, new Date(), helpee.vehicle, helpee.lat, helpee.long);
     this.props.navigation.navigate('MapStack');
   };
 
