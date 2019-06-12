@@ -81,6 +81,15 @@ export default class SignInScreen extends React.Component {
 
           <View style={styles.welcomeContainer}>
             <Button
+              onPress={() => this.login('feroz')}
+              buttonStyle={styles.button}
+              title="Ride Share (Feroz)"
+              color="#8405f4"
+            />
+          </View>
+
+          <View style={styles.welcomeContainer}>
+            <Button
               onPress={() => this.login('maysam')}
               buttonStyle={styles.button}
               title="Medic (Maysam)"
