@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-  list: {
+  listItem: {
     alignItems: 'center',
     marginTop: 10,
     marginBottom: 20,
@@ -165,7 +165,7 @@ export default class HelperScreen extends React.Component {
         </View>
         <FlatList
           data={this.state.messages}
-          renderItem={({ item }) => <View style={styles.list}>
+          renderItem={({ item }) => <View style={styles.listItem}>
             <Text style={styles.item}>{item.msg}</Text>
             <View style={styles.helpContainer}>
               {this.display(item)}

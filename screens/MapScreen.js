@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 15,
-    backgroundColor: '#fff',
+    backgroundColor: '#eee',
+    minHeight: '100%',
   },
   item: {
     padding: 10,
@@ -47,6 +48,15 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     paddingTop: 30,
+  },
+  listItem: {
+    alignItems: 'center',
+    marginTop: 10,
+    marginBottom: 20,
+    borderColor: '#aaa',
+    borderStyle: 'solid',
+    borderWidth: 1,
+    position: 'relative'
   }
 });
 
@@ -141,13 +151,12 @@ export default class MapScreen extends React.Component {
         <View style={styles.activity}>
           <ActivityIndicator size="large" color="#0000ff"/>
         </View>
-
         )
     } else {
       listView = (
         <FlatList
           data={this.state.messages}
-          renderItem={({ item }) => <Text style={styles.item}>{item.user} is on his way. ETA 20 mins.</Text>}
+          renderItem={({ item }) => <View style={styles.listItem}><Text style={styles.item}>{item.user} is on his way. ETA 20 mins.</Text></View>}
         />
       )
     }
@@ -162,7 +171,7 @@ export default class MapScreen extends React.Component {
             />
           </View>
           <MapView
-            style={{ alignSelf: 'stretch', height: 300 }}
+            style={{ alignSelf: 'stretch', height: 400 }}
             region={state.mapRegion}
             provider={MapView.PROVIDER_GOOGLE}
             onReady={this.focusMap}>
