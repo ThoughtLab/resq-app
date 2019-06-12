@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
 });
 
 var helpee = {
-  name: 'feroz',
+  name: 'ellis',
   vehicle: 'RAV4',
   lat: '-37.823891',
   long: '144.911118'
@@ -136,7 +136,7 @@ export default class MapScreen extends React.Component {
     }
 
     var listView
-    if (this.state.isLoading && (this.state.messages == null || this.state.messages.length <= 0)) {
+    if(this.state.messages.length <= 0){
       listView = (
         <View style={styles.activity}>
           <ActivityIndicator size="large" color="#0000ff"/>
@@ -173,11 +173,7 @@ export default class MapScreen extends React.Component {
               />
             )}
           </MapView>
-          {/* {listView} */}
-          <View style={styles.activity}>
-          <Text>An angel is on its way. ETA 10 mins</Text>
-        </View>
-
+          {listView}
         </ScrollView>
 
       </View>
